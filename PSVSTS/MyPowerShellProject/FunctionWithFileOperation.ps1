@@ -6,13 +6,15 @@
 .EXAMPLE
    FunctionWithFileOperation -Path .\somefile.txt
 #>
-function FunctionWithFileOperation
-{
+function FunctionWithFileOperation {
+
     [CmdletBinding()]
     [OutputType([int])]
-    Param
-    (
+    Param (
+
 		[Parameter(Mandatory=$true, Position=0)]
+		[ValidateNotNullOrEmpty()]
+		[ValidateScript({ Test-Path $Path })]
 		[string]$Path
 	)
 

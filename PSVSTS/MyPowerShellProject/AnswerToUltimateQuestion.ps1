@@ -6,12 +6,11 @@
 .EXAMPLE
    $truth = AnswerToUltimateQuestion
 #>
-function AnswerToUltimateQuestion
-{
+function AnswerToUltimateQuestion {
+
     [CmdletBinding()]
     [OutputType([int])]
-    Param
-    ()
+    Param ()
 
     42
 }

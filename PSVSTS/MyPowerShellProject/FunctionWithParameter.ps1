@@ -6,12 +6,11 @@
 .EXAMPLE
    FunctionWithParameter -Path .\somefile.txt
 #>
-function FunctionWithParameter
-{
+function FunctionWithParameter {
+
     [CmdletBinding()]
     [OutputType([int])]
-    Param
-    (
+    Param (
 		[Parameter(Mandatory=$true, Position=0)]
 		[string]$Path
 	)

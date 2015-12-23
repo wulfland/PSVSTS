@@ -4,9 +4,9 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path).Replace(".tests.", ".")
 
 Describe "AnswerToUltimateQuestion" {
 
-	Context "Exists" {
+	Context "Given an enormous supercomputer named Deep Thought, when we ask the ultimate question about life, the universe, and everything" {
 
-		It "Runs" {
+		It "should return 42" {
 
 			AnswerToUltimateQuestion | Should Be 42
 		}

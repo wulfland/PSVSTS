@@ -23,7 +23,7 @@ Describe "FunctionWithParameter" {
 
 	Context "When the file does exist" {
 
-		Mock Test-Path { $true } -Verifiable
+		Mock Test-Path { $true } -Verifiable -ParameterFilter { $Path -eq "file does exist" }
 		Mock Get-ChildItem { @{ Length = 42 } } -Verifiable
 
 		$actual = FunctionWithParameter -Path "file does exist"

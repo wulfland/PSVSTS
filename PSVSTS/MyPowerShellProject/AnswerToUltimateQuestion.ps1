@@ -12,5 +12,5 @@ function AnswerToUltimateQuestion {
     [OutputType([int])]
     Param ()
 
-    42
+    42 
 }

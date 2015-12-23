@@ -31,4 +31,4 @@ Import-Module $modulePath
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 
 #Invoke-Pester -Path $SourceDir -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
-Invoke-Pester -Path $SourceDir -PassThru -OutputFormat NUnitXml -EnableExit
+Invoke-Pester -Path $SourceDir -OutputFile $outputFile -PassThru -OutputFormat NUnitXml -EnableExit

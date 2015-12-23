@@ -30,6 +30,7 @@
     <Compile Include="AnswerToUltimateQuestion.tests.ps1" />
     <Compile Include="FunctionWithFileOperation.tests.ps1" />
     <Compile Include="FunctionWithParameter.tests.ps1" />
+    <Compile Include="Run-Tests.ps1" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Target Name="Build" />

@@ -24,7 +24,7 @@ if (-not(Test-Path $modulePath)) {
 # Dissable autoloading of modules to catch errors on local development machine.
 $PSModuleAutoloadingPreference = "none"
 # Set the default strict mode to Latest.
-Set-StrictMode -Version Latest
+#Set-StrictMode -Version Latest
 # Load the module.
 Import-Module $modulePath
 # Run all tests, and fail the build when a test is broken.

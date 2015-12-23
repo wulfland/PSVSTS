@@ -29,4 +29,6 @@ $PSModuleAutoloadingPreference = "none"
 Import-Module $modulePath
 # Run all tests, and fail the build when a test is broken.
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
-Invoke-Pester -Path $SourceDir -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+
+#Invoke-Pester -Path $SourceDir -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+Invoke-Pester -Path $SourceDir -PassThru -OutputFormat NUnitXml -EnableExit

@@ -23,15 +23,3 @@ Import-Module $modulePath -DisableNameChecking
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 
 Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
-
-[Reflection.Assembly]::LoadWithPartialName('Microsoft.TeamFoundation.Client')
-[Reflection.Assembly]::LoadWithPartialName('Microsoft.TeamFoundation.Build.Client')
-     
-$tpc = [Microsoft.TeamFoundation.Client.TfsTeamProjectCollectionFactory]::GetTeamProjectCollection([string]$env:BUILD_COLLECTIONURI)
-$buildService = $tpc.GetService([Microsoft.TeamFoundation.Build.Client.IBuildServer])
-$build = $buildService.GetBuild([string]$env:BUILD_BUILDURI)
- 
-$message = "Write something..."
-[Microsoft.TeamFoundation.Build.Client.InformationNodeConverters]::AddCustomSummaryInformation($build.Information, $message, "ConfigurationSummary", "Javascript Coverage", 200)
-$build.Information.Save();
-

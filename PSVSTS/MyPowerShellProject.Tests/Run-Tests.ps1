@@ -22,4 +22,4 @@ Import-Module $modulePath -DisableNameChecking
 
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 
-Invoke-Pester -Path $SourceDir -CodeCoverage $SourceDir "PSVSTS/MyPowerShellProject/*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit

@@ -1,6 +1,6 @@
 <#
 .Synopsis
-   FunctionWithParameter
+   FunctionWithParameter.
 .DESCRIPTION
    Returns the file length of a file.
 .EXAMPLE

@@ -22,4 +22,12 @@ Import-Module $modulePath -DisableNameChecking
 
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 
-Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+$testCoverageFiles = @()
+Get-ChildItem "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -Recurse | ForEach-Object { $testCoverageFiles += $_.FullName }
+
+$testResultSettings = @{ 
+	OutputFormat = "NUnitXml"
+	OutputFile = $outputFile
+}
+
+Invoke-Pester -Path $SourceDir -CodeCoverage $testCoverageFiles -PassThru @testResultSettings

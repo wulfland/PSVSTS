@@ -146,6 +146,6 @@ $linesCovered = $result.CodeCoverage.NumberOfCommandsExecuted - $result.CodeCove
 #$template.coverage.'lines-valid' = "$($result.CodeCoverage.NumberOfCommandsAnalyzed)"
 #$template.coverage.'line-rate' = "$($linesCovered / $result.CodeCoverage.NumberOfCommandsAnalyzed)"
 
-$template | Out-File (Join-Path $SourceDir "coverage.xml")
+$template.Save((Join-Path $SourceDir "coverage.xml"))
 
 $result

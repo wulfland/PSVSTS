@@ -22,4 +22,28 @@ Import-Module $modulePath -DisableNameChecking
 
 $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 
-Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+$result = Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
+
+[xml]$template = "<coverage 
+          lines-covered=''  
+          lines-valid=''
+          line-rate='' 
+          branches-covered='' 
+          branches-valid=''
+          branch-rate=''  
+          complexity='0' 
+          version='' 
+          timestamp=''>
+</coverage>"
+
+$linesCovered = $result.CodeCoverage.NumberOfCommandsExecuted - $result.CodeCoverage.NumberOfCommandsMissed
+
+$template.coverage.timestamp = "$(Get-Date)"
+$template.coverage.version = "1.0.0.0"
+$template.coverage.'lines-covered' = "$linesCovered"
+$template.coverage.'lines-valid' = "$($result.CodeCoverage.NumberOfCommandsAnalyzed)"
+$template.coverage.'line-rate' = "$($linesCovered / $result.CodeCoverage.NumberOfCommandsAnalyzed)"
+
+$template | Out-File (Join-Path $SourceDir "coverage.xml")
+
+$result

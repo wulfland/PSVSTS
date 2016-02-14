@@ -25,7 +25,6 @@ $outputFile = Join-Path $SourceDir "TEST-pester.xml"
 $result = Invoke-Pester -Path $SourceDir -CodeCoverage "$SourceDir\PSVSTS\MyPowerShellProject\*.ps1" -PassThru -OutputFile $outputFile -OutputFormat NUnitXml -EnableExit
 
 [xml]$template = "<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE coverage SYSTEM 'https://github.com/cobertura/web/blob/master/htdocs/xml/coverage-04.dtd'>
 <coverage branches-covered='' branches-valid='' branch-rate='' complexity='' line-rate='' lines-covered='' lines-valid='' timestamp='' version=''>
 	<packages></packages>
 </coverage>"
